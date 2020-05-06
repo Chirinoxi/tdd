@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cl.ucn.disc.pdbp.tdd.model.ModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-05-06T19:50:30" hostname="ignacio-HP-Notebook" time="0.076">
+<testsuite name="cl.ucn.disc.pdbp.tdd.model.ModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-05-06T22:06:05" hostname="ignacio-HP-Notebook" time="0.074">
   <properties/>
-  <testcase name="testEmail()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.062"/>
-  <testcase name="testDigitoVerificador()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.061"/>
-  <testcase name="testPersona()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.076"/>
-  <system-out><![CDATA[15:50:30.811 [ForkJoinPool-1-worker-3] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - .. rut ..
-15:50:30.816 [ForkJoinPool-1-worker-3] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - Done.
+  <testcase name="testDigitoVerificador()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.063"/>
+  <testcase name="testEmail()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.064"/>
+  <testcase name="testPersona()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.068"/>
+  <system-out><![CDATA[18:06:05.834 [ForkJoinPool-1-worker-3] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - Done.
 ]]></system-out>
-  <system-err><![CDATA[may. 06, 2020 3:50:30 P. M. org.junit.jupiter.engine.config.EnumConfigurationParameterConverter get
+  <system-err><![CDATA[may. 06, 2020 6:06:05 P. M. org.junit.jupiter.engine.config.EnumConfigurationParameterConverter get
 INFO: Using parallel execution mode 'CONCURRENT' set via the 'junit.jupiter.execution.parallel.mode.default' configuration parameter.
 ]]></system-err>
 </testsuite>
