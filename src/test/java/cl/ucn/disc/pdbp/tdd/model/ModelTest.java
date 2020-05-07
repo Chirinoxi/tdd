@@ -48,13 +48,13 @@ public final class ModelTest {
 
         // Testing nullity
         log.debug(".. nullity ..");
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, null, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, rutOk, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, null, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, rutOk, null, null, null));
         Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, null, null, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, null, rutOk, null, null, null));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, null, null, null, null));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, rutOk, null, null, null));
         Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, apellido, null, null, null, null));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, null, rutOk, null, null, null));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, rutOk, null, null, null));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, null, null, null, null));
 
         // Testing invalid rut
         log.debug(".. rut ..");
