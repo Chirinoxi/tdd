@@ -60,7 +60,8 @@ public final class ModelTest {
         log.debug(".. rut ..");
         Assertions.assertThrows(RuntimeException.class, () -> new Persona(nombre, apellido, rutError, direccion, numFijo, numMovil));
 
-        // TODO: Add the size of nombre y apellido.
+
+        log.debug(".. verificando nombre y apellido ..");
 
         boolean nameSize = (nombre.length() >= 2);
         boolean lastNameSize = (apellido.length() >= 3);
