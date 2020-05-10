@@ -1,7 +1,6 @@
 package cl.ucn.disc.pdbp.tdd.model;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,30 +36,40 @@ public final class ModelTest {
         String rutOk = "152532873";
         String rutError = "15253287K";
         String direccion = "Salvador Reyes 1272";
+        String email = "acontreras@ucn.cl";
         Integer numFijo = 55373945;
         Integer numMovil = 953335378;
 
         // Test constructor and getters
-        Persona persona = new Persona(nombre, apellido, rutOk, direccion, numFijo, numMovil);
+        Persona persona = new Persona(nombre, apellido, rutOk, direccion, numFijo, numMovil, email);
         Assertions.assertEquals(persona.getNombre(), nombre);
         Assertions.assertEquals(persona.getApellido(), apellido);
         Assertions.assertEquals(persona.getNombreApellido(), nombreApellido);
 
         // Testing nullity
         log.debug(".. nullity ..");
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, null, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, rutOk, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, null, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, rutOk, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, null, null, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, null, rutOk, null, null, null));
-        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, apellido, null, null, null, null));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, null, null, null, null, null, email));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, null, null, null, null, email));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, rutOk, null, null, null, email));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, apellido, null, null, null, null, email));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(nombre, null, rutOk, null, null, null, email));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, apellido, rutOk, null, null, null, email));
+        Assertions.assertThrows(NullPointerException.class, () -> new Persona(null, null, null, null, null, null, email));
 
         // Testing invalid rut
         log.debug(".. rut ..");
-        Assertions.assertThrows(RuntimeException.class, () -> new Persona(nombre, apellido, rutError, direccion, numFijo, numMovil));
+        Assertions.assertThrows(RuntimeException.class, () -> new Persona(nombre, apellido, rutError, direccion, numFijo, numMovil, email));
 
-        // TODO: Add the size of nombre y apellido.
+
+        log.debug(".. verificando nombre y apellido ..");
+
+        boolean nameSize = (nombre.length() >= 2);
+        boolean lastNameSize = (apellido.length() >= 3);
+
+        Assertions.assertTrue(nameSize);
+        Assertions.assertTrue(lastNameSize);
+
+
         log.debug("Done.");
     }
 

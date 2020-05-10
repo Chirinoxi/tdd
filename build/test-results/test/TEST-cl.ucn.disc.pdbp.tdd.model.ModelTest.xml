@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="cl.ucn.disc.pdbp.tdd.model.ModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-05-07T04:53:22" hostname="ignacio-HP-Notebook" time="0.129">
+<testsuite name="cl.ucn.disc.pdbp.tdd.model.ModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-05-10T02:08:25" hostname="IGNACIO-DELL" time="0.067">
   <properties/>
-  <testcase name="testEmail()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.101"/>
-  <testcase name="testDigitoVerificador()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.091"/>
-  <testcase name="testPersona()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.136"/>
-  <system-out><![CDATA[00:53:22.984 [ForkJoinPool-1-worker-3] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - .. nullity ..
-00:53:22.998 [ForkJoinPool-1-worker-3] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - .. rut ..
-00:53:23.002 [ForkJoinPool-1-worker-3] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - Done.
+  <testcase name="testPersona()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.067"/>
+  <testcase name="testDigitoVerificador()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.067"/>
+  <testcase name="testEmail()" classname="cl.ucn.disc.pdbp.tdd.model.ModelTest" time="0.063"/>
+  <system-out><![CDATA[23:08:25.111 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - Testing Persona ..
+23:08:25.116 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - .. valid ..
+23:08:25.129 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - .. nullity ..
+23:08:25.141 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - .. rut ..
+23:08:25.143 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.model.ModelTest - Done.
 ]]></system-out>
-  <system-err><![CDATA[may. 07, 2020 12:53:22 A. M. org.junit.jupiter.engine.config.EnumConfigurationParameterConverter get
-INFO: Using parallel execution mode 'CONCURRENT' set via the 'junit.jupiter.execution.parallel.mode.default' configuration parameter.
+  <system-err><![CDATA[may 09, 2020 11:08:24 PM org.junit.jupiter.engine.config.EnumConfigurationParameterConverter get
+INFORMACIÓN: Using parallel execution mode 'CONCURRENT' set via the 'junit.jupiter.execution.parallel.mode.default' configuration parameter.
 ]]></system-err>
 </testsuite>
