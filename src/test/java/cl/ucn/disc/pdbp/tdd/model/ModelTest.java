@@ -61,6 +61,14 @@ public final class ModelTest {
         Assertions.assertThrows(RuntimeException.class, () -> new Persona(nombre, apellido, rutError, direccion, numFijo, numMovil));
 
         // TODO: Add the size of nombre y apellido.
+
+        boolean nameSize = (nombre.length() >= 2);
+        boolean lastNameSize = (apellido.length() >= 3);
+
+        Assertions.assertTrue(nameSize);
+        Assertions.assertTrue(lastNameSize);
+
+
         log.debug("Done.");
     }
 

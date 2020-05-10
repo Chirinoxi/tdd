@@ -1,11 +1,20 @@
 package cl.ucn.disc.pdbp.tdd.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import org.jetbrains.annotations.NotNull;
 
 /**
  *
  */
+@DatabaseTable(tableName = "persona")
 public class Persona {
+
+    /**
+     * ID de una persona en la base de datos
+     */
+    @DatabaseField(generatedId = true)
+    private long id;
 
     private String nombre;
     private String apellido;
