@@ -9,7 +9,7 @@ public class Ficha {
     private final Sexo sexo;
     private final String raza;
     private final String color;
-    private final String tipo;
+    private final Tipo tipo;
 
     /**
      *  Constructor de una ficha médica
@@ -22,7 +22,7 @@ public class Ficha {
      * @param color
      * @param tipo
      */
-    public Ficha(String numeroFicha, String pacienteNombre, String especie, String fechaNacimiento, Sexo sexo, String raza, String color, String tipo) {
+    public Ficha(String numeroFicha, String pacienteNombre, String especie, String fechaNacimiento, Sexo sexo, String raza, String color, Tipo tipo) {
         this.numeroFicha = numeroFicha;
         this.pacienteNombre = pacienteNombre;
         this.especie = especie;
@@ -93,7 +93,7 @@ public class Ficha {
      *
      * @return tipo de paciente
      */
-    public String getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
