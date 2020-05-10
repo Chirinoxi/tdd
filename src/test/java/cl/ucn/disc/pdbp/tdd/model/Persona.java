@@ -1,25 +1,52 @@
 package cl.ucn.disc.pdbp.tdd.model;
 
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import org.jetbrains.annotations.NotNull;
+import cl.ucn.disc.pdbp.tdd.model.Validation;
 
 /**
  *
  */
-@DatabaseTable(tableName = "persona")
+@DatabaseTable(tableName="persona")
 public class Persona {
 
     /**
-     * ID de una persona en la base de datos
+     * The id: Primary key (autoincrement) of the table.
      */
     @DatabaseField(generatedId = true)
-    private long id;
+    private Long id;
 
+    /**
+     * Name of a person.
+     */
+    @DatabaseField(canBeNull = false)
     private String nombre;
+
+    /**
+     * Last Name of a person.
+     */
+    @DatabaseField(canBeNull = false)
     private String apellido;
-    private String nombreApellido;
+
+    /**
+     * The rut of a chilean person.
+     */
+    @DatabaseField(canBeNull = false, index = true)
     private String rut;
+
+    /**
+     * Empty Constructor
+     */
+
+    Persona(){
+        // Nothing here
+    }
+
+
+    private String nombreApellido;
+    private String email;
     private String direccion;
     private Integer telefonoFijo;
     private Integer telefonoMovil;
@@ -29,15 +56,17 @@ public class Persona {
      * @param nombre nombre de la persona
      * @param apellido apellido del individuo
      * @param rut rut válido
+     * @param email correo de una persona.
      */
 
-    public Persona(String nombre, String apellido, String rut, String direccion, Integer fonoFijo, Integer fonoMovil) {
+    public Persona(String nombre, String apellido, String rut, String direccion, Integer fonoFijo, Integer fonoMovil, String email) {
         this.Persona(nombre,
                         apellido,
                             rut,
                                 direccion,
                                     fonoFijo,
-                                        fonoMovil);
+                                        fonoMovil,
+                                            email);
     }
 
 
@@ -46,11 +75,11 @@ public class Persona {
      * @param apellido apellido del individuo
      * @param rut rut válido
      */
-    private void Persona(String nombre, String apellido, String rut, String direccion, Integer fonoFijo, Integer fonoMovil) {
+    private void Persona(String nombre, String apellido, String rut, String direccion, Integer fonoFijo, Integer fonoMovil, String correo) {
 
-        if (nombre == null || apellido == null || rut == null || direccion == null || fonoFijo == null || fonoMovil == null) {
+        if (nombre == null || apellido == null || rut == null || direccion == null || fonoFijo == null || fonoMovil == null || correo == null) {
             throw new NullPointerException("Parameters with null values");
-        }else if (rutIsValid(rut) == false) {
+        }else if (!rutIsValid(rut)) {
             throw new RuntimeException();
         }else{
             this.nombre = nombre;
