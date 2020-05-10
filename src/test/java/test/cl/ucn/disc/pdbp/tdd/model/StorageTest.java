@@ -1,6 +1,4 @@
-package cl.ucn.disc.pdbp.tdd.model;
-
-import static org.junit.jupiter.api.Assertions.*;
+package test.cl.ucn.disc.pdbp.tdd.model;
 
 import cl.ucn.disc.pdbp.tdd.model.Persona;
 import com.j256.ormlite.dao.Dao;
