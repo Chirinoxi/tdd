@@ -58,7 +58,6 @@ public class Persona {
      * @param rut rut válido
      * @param email correo de una persona.
      */
-
     public Persona(String nombre, String apellido, String rut, String direccion, Integer fonoFijo, Integer fonoMovil, String email) {
         this.Persona(nombre,
                         apellido,
@@ -68,7 +67,6 @@ public class Persona {
                                         fonoMovil,
                                             email);
     }
-
 
     /**
      *  @param nombre nombre de la persona
@@ -125,6 +123,46 @@ public class Persona {
         else if( dig == Integer.parseInt(digitoIngresado)){return true;}
         else{return false;}
 
+    }
+
+    /**
+     * Retorna el id de una persona.
+     * @return
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Retorna el correo de una persona.
+     * @return
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Retorna la direccion de una persona.
+     * @return
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * Retorna el telefono fijo de una persona.
+     * @return
+     */
+    public Integer getTelefonoFijo() {
+        return telefonoFijo;
+    }
+
+    /**
+     * Retorna el telefono movil de una persona
+     * @return
+     */
+    public Integer getTelefonoMovil() {
+        return telefonoMovil;
     }
 
     /**
