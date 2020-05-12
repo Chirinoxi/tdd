@@ -1,4 +1,4 @@
-package test.cl.ucn.disc.pdbp.tdd.model;
+package cl.ucn.disc.pdbp.tdd.dao;
 
 import cl.ucn.disc.pdbp.tdd.model.Persona;
 import com.j256.ormlite.dao.Dao;

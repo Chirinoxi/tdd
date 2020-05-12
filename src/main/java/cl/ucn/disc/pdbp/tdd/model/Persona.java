@@ -4,7 +4,6 @@ package cl.ucn.disc.pdbp.tdd.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import org.jetbrains.annotations.NotNull;
-import cl.ucn.disc.pdbp.tdd.model.Validation;
 
 /**
  *
@@ -40,8 +39,21 @@ public class Persona {
      * Empty Constructor
      */
 
-    Persona(){
+    private static Persona _instance;
+
+    /**
+     * PATRON SINGLETON
+     */
+    private Persona(){
         // Nothing here
+    }
+
+    public static Persona getInstance(){
+
+        if(_instance == null){
+            _instance = new Persona();
+        }
+        return _instance;
     }
 
 
@@ -50,6 +62,8 @@ public class Persona {
     private String direccion;
     private Integer telefonoFijo;
     private Integer telefonoMovil;
+
+
 
     /**
      * Constructor de una persona.

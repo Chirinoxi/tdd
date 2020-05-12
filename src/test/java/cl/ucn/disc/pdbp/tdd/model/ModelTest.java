@@ -1,7 +1,6 @@
-package test.cl.ucn.disc.pdbp.tdd.model;
+package cl.ucn.disc.pdbp.tdd.model;
 
-import cl.ucn.disc.pdbp.tdd.model.Persona;
-import cl.ucn.disc.pdbp.tdd.model.Validation;
+import cl.ucn.disc.pdbp.tdd.utils.Validation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

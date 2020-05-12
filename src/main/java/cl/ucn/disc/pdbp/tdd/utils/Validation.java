@@ -1,4 +1,4 @@
-package cl.ucn.disc.pdbp.tdd.model;
+package cl.ucn.disc.pdbp.tdd.utils;
 import java.util.regex.*;
 
 public class Validation {

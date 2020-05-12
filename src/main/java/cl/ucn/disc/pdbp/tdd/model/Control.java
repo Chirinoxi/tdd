@@ -4,13 +4,15 @@ import java.time.ZonedDateTime;
 
 public class Control {
 
-    private final ZonedDateTime fecha;
-    private final ZonedDateTime proximoControl;
-    private final float temperatura;
-    private final float peso;
-    private final float altura;
-    private final String diagnostico;
-    private final Persona veterinario;
+    private ZonedDateTime fecha;
+    private ZonedDateTime proximoControl;
+    private float temperatura;
+    private float peso;
+    private float altura;
+    private String diagnostico;
+    private Persona veterinario;
+
+    private static Control _instance;
 
     /**
      * @param fecha
@@ -29,6 +31,24 @@ public class Control {
         this.altura = altura;
         this.diagnostico = diagnostico;
         this.veterinario = veterinario;
+    }
+
+    /**
+     * Constructor privado para aplicar patron SINGLETON.
+     */
+    private Control(){// Nada Aquí
+
+    }
+
+    /**
+     * Patron Singleton
+     * @return Instancia actual de control.
+     */
+    public static Control getInstance() {
+        if(_instance == null){
+            _instance = new Control();
+        }
+        return _instance;
     }
 
     /**
