@@ -1,21 +1,16 @@
-ü22:56:38.110 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Persona with reflection
-j22:56:38.117 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating table 'persona'
-Ö22:56:38.118 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating index 'persona_rut_idx' for table 'persona
-ï22:56:38.705 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - opened connection to jdbc:h2:mem:fivet_db got #2117945616
-º22:56:38.751 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `persona` (`id` BIGINT AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `apellido` VARCHAR(255) NOT NULL , `rut` VARCHAR(255) NOT NULL , PRIMARY KEY (`id`) ) 
-≈22:56:38.758 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE INDEX IF NOT EXISTS `persona_rut_idx` ON `persona` ( `rut` )
-›22:56:38.836 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ) VALUES (?,?,?)' and 3 args, changed 1 rows
-ö22:56:38.836 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'id' in Persona object
-Z22:56:38.836 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.dao.StorageTest - Id 1
-∂22:56:38.867 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `persona` WHERE `id` = ?' and 1 args, got 1 result
-ù22:56:38.882 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.StatementBuilder - built statement SELECT * FROM `persona` WHERE `rut` = '20.212.289-2' 
-∏22:56:38.885 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - prepared statement 'SELECT * FROM `persona` WHERE `rut` = '20.212.289-2' ' with 0 args
-Ø22:56:38.899 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - starting iterator @2134476674 for 'SELECT * FROM `persona` WHERE `rut` = '20.212.289-2' '
-~22:56:38.900 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - closed iterator @2134476674 after 1 rows
-¨22:56:38.900 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.StatementExecutor - query of 'SELECT * FROM `persona` WHERE `rut` = '20.212.289-2' ' returned 1 results
-ì22:56:38.905 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.StatementBuilder - built statement SELECT * FROM `persona` WHERE `rut` = '19' 
-Æ22:56:38.906 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - prepared statement 'SELECT * FROM `persona` WHERE `rut` = '19' ' with 0 args
-•22:56:38.907 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - starting iterator @1427953821 for 'SELECT * FROM `persona` WHERE `rut` = '19' '
-~22:56:38.908 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - closed iterator @1427953821 after 0 rows
-¢22:56:38.908 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.StatementExecutor - query of 'SELECT * FROM `persona` WHERE `rut` = '19' ' returned 0 results
-y22:56:38.923 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - closed connection #2117945616
+û01:06:36.833 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Persona with reflection
+i01:06:36.837 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - creating table 'persona'
+Ñ01:06:36.839 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - creating index 'persona_rut_idx' for table 'persona
+ì01:06:37.100 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - opened connection to jdbc:h2:mem:fivet_db got #848475366
+Ã01:06:37.139 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `persona` (`id` BIGINT AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `apellido` VARCHAR(255) NOT NULL , `rut` VARCHAR(255) NOT NULL ,  UNIQUE (`rut`), PRIMARY KEY (`id`) ) 
+ƒ01:06:37.141 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE INDEX IF NOT EXISTS `persona_rut_idx` ON `persona` ( `rut` )
+01:06:37.145 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.StatementBuilder - built statement SELECT * FROM `persona` 
+ö01:06:37.153 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - prepared statement 'SELECT * FROM `persona` ' with 0 args
+ë01:06:37.167 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.SelectIterator - starting iterator @2057913734 for 'SELECT * FROM `persona` '
+}01:06:37.168 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.SelectIterator - closed iterator @2057913734 after 0 rows
+é01:06:37.168 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.StatementExecutor - query of 'SELECT * FROM `persona` ' returned 0 results
+‹01:06:37.180 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ) VALUES (?,?,?)' and 3 args, changed 1 rows
+ô01:06:37.181 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'id' in Persona object
+‹01:06:37.183 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ) VALUES (?,?,?)' and 3 args, changed 1 rows
+ô01:06:37.183 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '2' from keyholder to 'id' in Persona object
+w01:06:37.185 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - closed connection #848475366

@@ -32,7 +32,7 @@ public class Persona {
     /**
      * The rut of a chilean person.
      */
-    @DatabaseField(canBeNull = false, index = true)
+    @DatabaseField(canBeNull = false, unique = true, index = true)
     private String rut;
 
     /**
