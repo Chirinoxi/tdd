@@ -2,7 +2,7 @@ package cl.ucn.disc.pdbp.tdd.model;
 
 import java.time.ZonedDateTime;
 
-public class Control {
+public final class Control {
 
     private ZonedDateTime fecha;
     private ZonedDateTime proximoControl;

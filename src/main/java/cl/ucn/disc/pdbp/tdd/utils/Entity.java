@@ -3,7 +3,10 @@ package cl.ucn.disc.pdbp.tdd.utils;
 import org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class Entity {
+/**
+ * Entity of a
+ */
+public final class Entity {
 
     /**
      * This method print the atributes of any object, independent of the type of class.

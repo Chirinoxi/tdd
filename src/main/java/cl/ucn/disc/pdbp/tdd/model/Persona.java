@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
  *
  */
 @DatabaseTable(tableName="persona")
-public class Persona {
+public final class Persona {
 
     /**
      * The id: Primary key (autoincrement) of the table.
@@ -36,6 +36,36 @@ public class Persona {
     private String rut;
 
     /**
+     * The first and last name as one String.
+     */
+    @DatabaseField(canBeNull = false)
+    private String nombreApellido;
+
+    /**
+     * The email of a person.
+     */
+    @DatabaseField(canBeNull = false)
+    private String email;
+
+    /**
+     * The adress of a person
+     */
+    @DatabaseField(canBeNull = false)
+    private String direccion;
+
+    /**
+     * The static phone number of a person.
+     */
+    @DatabaseField(canBeNull = false)
+    private Integer telefonoFijo;
+
+    /**
+     * The mobile phone number of a person.
+     */
+    @DatabaseField(canBeNull = false)
+    private Integer telefonoMovil;
+
+    /**
      * Empty Constructor
      */
 
@@ -44,7 +74,7 @@ public class Persona {
     /**
      * PATRON SINGLETON
      */
-    private Persona(){
+    Persona(){
         // Nothing here
     }
 
@@ -57,11 +87,6 @@ public class Persona {
     }
 
 
-    private String nombreApellido;
-    private String email;
-    private String direccion;
-    private Integer telefonoFijo;
-    private Integer telefonoMovil;
 
 
 
@@ -101,6 +126,7 @@ public class Persona {
             this.direccion = direccion;
             this.telefonoFijo = fonoFijo;
             this.telefonoMovil = fonoMovil;
+            this.email = correo;
 
         }
     }

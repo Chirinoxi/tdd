@@ -1,6 +1,9 @@
 package cl.ucn.disc.pdbp.tdd.dao;
 
+import cl.ucn.disc.pdbp.tdd.model.Ficha;
 import cl.ucn.disc.pdbp.tdd.model.Persona;
+import cl.ucn.disc.pdbp.tdd.model.Sexo;
+import cl.ucn.disc.pdbp.tdd.model.Tipo;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -13,7 +16,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.ZonedDateTime;
 import java.util.List;
+import cl.ucn.disc.pdbp.tdd.utils.Entity;
 
 /**
  * Storage Test
@@ -76,8 +81,102 @@ public final class StorageTest {
 
         }
 
-        // TODO: Implementar CRUD.
+    }
+
+    @Test
+    public void testRepositoryFicha(){
+
+
+        // We configure the test database to use (in RAM memory)
+        String databaseUrl = "jdbc:h2:mem:fivet_db";
+
+        // Connection Source: autoclose with the try/catch
+        try(ConnectionSource connectionSource = new JdbcConnectionSource(databaseUrl)){
+
+            // Create the table from the Persona annotations.
+            TableUtils.createTableIfNotExists(connectionSource, Ficha.class);
+            TableUtils.createTableIfNotExists(connectionSource, Persona.class);
+
+
+            // 1. We create a persona from a Repository.
+            Persona persona = new Persona("Bastihan", "Chirino", "20.212.289-2", "El director 5813", 953335379, 552373945, "bcf1999@hotmail.com");
+
+            Repository<Persona, Long> personaRepo = new RepositoryOrmLite(connectionSource, Persona.class);
+
+            if(!personaRepo.create(persona)){
+
+                Assertions.fail("Cannot create persona !!");
+            }
+
+            //2. Instanciar una Ficha
+            Ficha ficha = new Ficha("PA-001",
+                    "Yaya",
+                    "Perro",
+                    ZonedDateTime.now(),
+                    Sexo.HEMBRA,
+                    "Labrador",
+                    "Cafe Claro",
+                    Tipo.EXTERNO,
+                    persona );
+
+
+            //3. Creamos repositorio para ficha e insertamos en la BD.
+            Repository<Ficha,Long> fichaRepo = new RepositoryOrmLite(connectionSource, Ficha.class);
+
+            if(!fichaRepo.create(ficha)){ Assertions.fail("We cannot create ficha !!"); }
+
+            //4.- Obtener una ficha y revisar si sus atributos son distinto de null.
+
+            Ficha fichaDB = fichaRepo.findById(1L);
+
+            //Entity entity = new Entity();
+
+            //String data = entity.toString(fichaDB);
+
+            //System.out.println(data);
+
+            Assertions.assertEquals(ficha.getPacienteNombre(), fichaDB.getPacienteNombre(), "(Ficha): Nombres aren't equals !");
+            Assertions.assertEquals(ficha.getRaza(), fichaDB.getRaza(), " (Ficha): Raza's are not equals !");
+            Assertions.assertEquals(ficha.getNumeroFicha(), fichaDB.getNumeroFicha(), "(Ficha): Numero de Ficha are not equals !");
+
+            log.debug("Id {}", ficha.getId());
+
+            // We test the update DAO method, specifically we update de owner of the pet.
+
+            Persona persona2 = new Persona("Ignacio", "Chirino", "19.445.801-0", "El director 5813", 953335379, 552373945, "ichirino@gmail.com");
+
+            // Creamos la persona desde el repositorio, si no lo hacemos de este modo el atributo ID del objeto persona2 sera null !!!
+
+            boolean createPersona2 = personaRepo.create(persona2);
+
+            if(!createPersona2){
+
+                Assertions.fail("Cannot create persona 2!!");
+            }
+
+            fichaDB.setDuenio(persona2);
+
+            fichaRepo.update(fichaDB);
+
+            Ficha fichaDB2 = fichaRepo.findById(1L);
+
+            // We define that 2 persons are 'equals' when they have the same rut.
+            Assertions.assertEquals(persona2.getRut(), fichaDB2.getDuenio().getRut(), "(Ficha): The updated value it is not correct !!");
+
+            // We test the delete method of the DAO
+            fichaRepo.delete(ficha.getId());
+            Assertions.assertEquals(fichaRepo.findById(ficha.getId()), null, "(Ficha): ID's aren't equals !");
+
+
+        }catch(IOException | SQLException e){
+
+            log.error("Error !!", e);
+
+        }
+
+
 
     }
+
 
 }

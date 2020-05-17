@@ -1,16 +1,24 @@
-ž01:06:36.833 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Persona with reflection
-i01:06:36.837 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - creating table 'persona'
-„01:06:36.839 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - creating index 'persona_rut_idx' for table 'persona
-“01:06:37.100 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - opened connection to jdbc:h2:mem:fivet_db got #848475366
-Ì01:06:37.139 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `persona` (`id` BIGINT AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `apellido` VARCHAR(255) NOT NULL , `rut` VARCHAR(255) NOT NULL ,  UNIQUE (`rut`), PRIMARY KEY (`id`) ) 
-Ä01:06:37.141 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE INDEX IF NOT EXISTS `persona_rut_idx` ON `persona` ( `rut` )
-01:06:37.145 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.StatementBuilder - built statement SELECT * FROM `persona` 
-š01:06:37.153 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - prepared statement 'SELECT * FROM `persona` ' with 0 args
-‘01:06:37.167 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.SelectIterator - starting iterator @2057913734 for 'SELECT * FROM `persona` '
-}01:06:37.168 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.SelectIterator - closed iterator @2057913734 after 0 rows
-Ž01:06:37.168 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.StatementExecutor - query of 'SELECT * FROM `persona` ' returned 0 results
-Ü01:06:37.180 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ) VALUES (?,?,?)' and 3 args, changed 1 rows
-™01:06:37.181 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'id' in Persona object
-Ü01:06:37.183 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ) VALUES (?,?,?)' and 3 args, changed 1 rows
-™01:06:37.183 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '2' from keyholder to 'id' in Persona object
-w01:06:37.185 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - closed connection #848475366
+ž16:51:55.575 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Persona with reflection
+œ16:51:55.582 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Ficha with reflection
+g16:51:55.583 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - creating table 'ficha'
+”16:51:55.796 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - opened connection to jdbc:h2:mem:fivet_db got #1068219684
+Ý16:51:55.828 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `ficha` (`Id` BIGINT AUTO_INCREMENT , `numeroFicha` VARCHAR(255) , `pacienteNombre` VARCHAR(255) , `especie` VARCHAR(255) , `fechaNacimiento` VARCHAR(64) , `sexo` VARCHAR(100) , `raza` VARCHAR(255) , `color` VARCHAR(255) , `tipo` VARCHAR(100) , `duenio_id` BIGINT NOT NULL ,  UNIQUE (`numeroFicha`), PRIMARY KEY (`Id`) ) 
+i16:51:55.829 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - creating table 'persona'
+„16:51:55.830 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - creating index 'persona_rut_idx' for table 'persona
+þ16:51:55.835 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `persona` (`id` BIGINT AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `apellido` VARCHAR(255) NOT NULL , `rut` VARCHAR(255) NOT NULL , `nombreApellido` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `direccion` VARCHAR(255) NOT NULL , `telefonoFijo` INTEGER NOT NULL , `telefonoMovil` INTEGER NOT NULL ,  UNIQUE (`rut`), PRIMARY KEY (`id`) ) 
+Ä16:51:55.837 [ForkJoinPool-1-worker-3] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE INDEX IF NOT EXISTS `persona_rut_idx` ON `persona` ( `rut` )
+¯16:51:55.859 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ,`nombreApellido` ,`email` ,`direccion` ,`telefonoFijo` ,`telefonoMovil` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
+™16:51:55.859 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'id' in Persona object
+¶16:51:55.870 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `ficha` (`numeroFicha` ,`pacienteNombre` ,`especie` ,`fechaNacimiento` ,`sexo` ,`raza` ,`color` ,`tipo` ,`duenio_id` ) VALUES (?,?,?,?,?,?,?,?,?)' and 9 args, changed 1 rows
+—16:51:55.870 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'Id' in Ficha object
+µ16:51:55.886 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `persona` WHERE `id` = ?' and 1 args, got 1 result
+³16:51:55.886 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `ficha` WHERE `Id` = ?' and 1 args, got 1 result
+Y16:51:55.891 [ForkJoinPool-1-worker-3] DEBUG cl.ucn.disc.pdbp.tdd.dao.StorageTest - Id 1
+¯16:51:55.894 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ,`nombreApellido` ,`email` ,`direccion` ,`telefonoFijo` ,`telefonoMovil` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
+™16:51:55.895 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '2' from keyholder to 'id' in Persona object
+Ë16:51:55.899 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - update data with statement 'UPDATE `ficha` SET `numeroFicha` = ?, `pacienteNombre` = ?, `especie` = ?, `fechaNacimiento` = ?, `sexo` = ?, `raza` = ?, `color` = ?, `tipo` = ?, `duenio_id` = ? WHERE `Id` = ?' and 10 args, changed 1 rows
+µ16:51:55.901 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `persona` WHERE `id` = ?' and 1 args, got 1 result
+³16:51:55.902 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `ficha` WHERE `Id` = ?' and 1 args, got 1 result
+»16:51:55.904 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - delete data with statement 'DELETE FROM `ficha` WHERE `Id` = ?' and 1 args, changed 1 rows
+µ16:51:55.905 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `ficha` WHERE `Id` = ?' and 1 args, got no results
+x16:51:55.907 [ForkJoinPool-1-worker-3] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - closed connection #1068219684
