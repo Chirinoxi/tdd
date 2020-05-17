@@ -63,8 +63,8 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
             theDao.create(entity);
             return true;
         } catch (SQLException e) {
-            return false;
-            //throw new RuntimeException(e);
+            //return false;
+            throw new RuntimeException(e);
         }
 
 

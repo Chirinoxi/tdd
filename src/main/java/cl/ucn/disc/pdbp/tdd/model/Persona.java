@@ -50,19 +50,19 @@ public final class Persona {
     /**
      * The adress of a person
      */
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, unique = false)
     private String direccion;
 
     /**
      * The static phone number of a person.
      */
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, unique = false)
     private Integer telefonoFijo;
 
     /**
      * The mobile phone number of a person.
      */
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, unique = true)
     private Integer telefonoMovil;
 
     /**
