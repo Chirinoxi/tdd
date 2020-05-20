@@ -4,6 +4,7 @@ package cl.ucn.disc.pdbp.tdd.dao;
 import checkers.units.quals.K;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
@@ -44,6 +45,24 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
         }
 
 
+    }
+
+    @Override
+    public List<T> findAll(String key, Object value) {
+        try{
+            return theDao.queryForEq(key, value);
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public QueryBuilder<T, K> getQuery() {
+        return theDao.queryBuilder();
     }
 
     @Override

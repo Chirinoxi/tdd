@@ -225,7 +225,7 @@ public final class StorageTest {
             Assertions.assertEquals(ficha.getRaza(), fichaDB.getRaza(), " (Ficha): Raza's are not equals !");
             Assertions.assertEquals(ficha.getNumeroFicha(), fichaDB.getNumeroFicha(), "(Ficha): Numero de Ficha are not equals !");
 
-            Control control = new Control(ZonedDateTime.now(), ZonedDateTime.now(), 39.0f, 20.0f, 1.2f, "Pukes", veterinario, fichaDB);
+            Control control = new Control(ZonedDateTime.now(), ZonedDateTime.now().plusWeeks(1L), 39.0f, 20.0f, 1.2f, "Pukes", veterinario, fichaDB);
 
             if(!controlRepo.create(control)){
                 Assertions.fail("We cannot create the control !!");
@@ -233,8 +233,7 @@ public final class StorageTest {
 
             Entity entity = new Entity(); // We use this variable to print the data of any object.
 
-            // We assign the list of controls to the ficha
-            fichaRepo.update(fichaDB);
+            //fichaRepo.update(fichaDB);
 
             log.debug("Ficha: {}", entity.toString(fichaDB));
 

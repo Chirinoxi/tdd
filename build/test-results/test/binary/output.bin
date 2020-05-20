@@ -1,87 +1,86 @@
-ü00:21:05.514 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Persona with reflection
-j00:21:05.527 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating table 'persona'
-Ö00:21:05.539 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating index 'persona_rut_idx' for table 'persona
-î00:21:06.896 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - opened connection to jdbc:h2:mem:fivet_db got #588887210
-ö00:21:06.991 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `persona` (`ID` BIGINT AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `apellido` VARCHAR(255) NOT NULL , `rut` VARCHAR(255) NOT NULL , `nombreApellido` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `direccion` VARCHAR(255) NOT NULL , `telefonoFijo` INTEGER NOT NULL , `telefonoMovil` INTEGER NOT NULL ,  UNIQUE (`rut`),  UNIQUE (`telefonoMovil`), PRIMARY KEY (`ID`) ) 
-≈00:21:06.994 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE INDEX IF NOT EXISTS `persona_rut_idx` ON `persona` ( `rut` )
-ü00:21:07.030 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Control with reflection
-ù00:21:07.032 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Ficha with reflection
-h00:21:07.033 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating table 'ficha'
-ﬁ00:21:07.053 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `ficha` (`ID` BIGINT AUTO_INCREMENT , `numeroFicha` VARCHAR(255) , `pacienteNombre` VARCHAR(255) , `especie` VARCHAR(255) , `fechaNacimiento` VARCHAR(64) , `sexo` VARCHAR(100) , `raza` VARCHAR(255) , `color` VARCHAR(255) , `tipo` VARCHAR(100) , `duenio_id` BIGINT NOT NULL ,  UNIQUE (`numeroFicha`), PRIMARY KEY (`ID`) ) 
-j00:21:07.056 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating table 'control'
-Ω00:21:07.063 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `control` (`ID` BIGINT AUTO_INCREMENT , `fecha` VARCHAR(64) , `proximoControl` VARCHAR(64) , `temperatura` FLOAT NOT NULL , `peso` FLOAT NOT NULL , `altura` FLOAT NOT NULL , `diagnostico` VARCHAR(255) NOT NULL , `veterinario_id` BIGINT NOT NULL , `ficha_id` BIGINT , PRIMARY KEY (`ID`) ) 
-∞00:21:07.162 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ,`nombreApellido` ,`email` ,`direccion` ,`telefonoFijo` ,`telefonoMovil` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
-ö00:21:07.162 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'ID' in Persona object
-∞00:21:07.164 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ,`nombreApellido` ,`email` ,`direccion` ,`telefonoFijo` ,`telefonoMovil` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
-ö00:21:07.165 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '2' from keyholder to 'ID' in Persona object
-∑00:21:07.183 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `ficha` (`numeroFicha` ,`pacienteNombre` ,`especie` ,`fechaNacimiento` ,`sexo` ,`raza` ,`color` ,`tipo` ,`duenio_id` ) VALUES (?,?,?,?,?,?,?,?,?)' and 9 args, changed 1 rows
-ò00:21:07.184 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'ID' in Ficha object
-∂00:21:07.204 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `persona` WHERE `ID` = ?' and 1 args, got 1 result
-¥00:21:07.205 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `ficha` WHERE `ID` = ?' and 1 args, got 1 result
-≥00:21:07.222 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `control` (`fecha` ,`proximoControl` ,`temperatura` ,`peso` ,`altura` ,`diagnostico` ,`veterinario_id` ,`ficha_id` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
-ö00:21:07.223 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'ID' in Control object
-Ã00:21:07.241 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - update data with statement 'UPDATE `ficha` SET `numeroFicha` = ?, `pacienteNombre` = ?, `especie` = ?, `fechaNacimiento` = ?, `sexo` = ?, `raza` = ?, `color` = ?, `tipo` = ?, `duenio_id` = ? WHERE `ID` = ?' and 10 args, changed 1 rows
-ï00:21:07.276 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.StatementBuilder - built statement SELECT * FROM `control` WHERE `ficha_id` = ? 
-∞00:21:07.292 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - prepared statement 'SELECT * FROM `control` WHERE `ficha_id` = ? ' with 1 args
-ß00:21:07.296 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - starting iterator @1835337708 for 'SELECT * FROM `control` WHERE `ficha_id` = ? '
-∂00:21:07.298 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `persona` WHERE `ID` = ?' and 1 args, got 1 result
-~00:21:07.299 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - closed iterator @1835337708 after 1 rows
-á00:21:07.337 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.dao.StorageTest - Ficha: cl.ucn.disc.pdbp.tdd.model.Ficha@378cb35c[
+ü01:33:46.176 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Persona with reflection
+j01:33:46.181 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating table 'persona'
+Ö01:33:46.183 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating index 'persona_rut_idx' for table 'persona
+ï01:33:46.727 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - opened connection to jdbc:h2:mem:fivet_db got #1482871897
+ö01:33:46.783 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `persona` (`ID` BIGINT AUTO_INCREMENT , `nombre` VARCHAR(255) NOT NULL , `apellido` VARCHAR(255) NOT NULL , `rut` VARCHAR(255) NOT NULL , `nombreApellido` VARCHAR(255) NOT NULL , `email` VARCHAR(255) NOT NULL , `direccion` VARCHAR(255) NOT NULL , `telefonoFijo` INTEGER NOT NULL , `telefonoMovil` INTEGER NOT NULL ,  UNIQUE (`rut`),  UNIQUE (`telefonoMovil`), PRIMARY KEY (`ID`) ) 
+≈01:33:46.785 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE INDEX IF NOT EXISTS `persona_rut_idx` ON `persona` ( `rut` )
+ü01:33:46.851 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Control with reflection
+ù01:33:46.851 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.dao.DaoManager - created dao for class class cl.ucn.disc.pdbp.tdd.model.Ficha with reflection
+h01:33:46.851 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating table 'ficha'
+ﬁ01:33:46.855 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `ficha` (`ID` BIGINT AUTO_INCREMENT , `numeroFicha` VARCHAR(255) , `pacienteNombre` VARCHAR(255) , `especie` VARCHAR(255) , `fechaNacimiento` VARCHAR(64) , `sexo` VARCHAR(100) , `raza` VARCHAR(255) , `color` VARCHAR(255) , `tipo` VARCHAR(100) , `duenio_id` BIGINT NOT NULL ,  UNIQUE (`numeroFicha`), PRIMARY KEY (`ID`) ) 
+j01:33:46.855 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - creating table 'control'
+Ω01:33:46.860 [ForkJoinPool-1-worker-1] INFO com.j256.ormlite.table.TableUtils - executed create table statement changed 0 rows: CREATE TABLE IF NOT EXISTS `control` (`ID` BIGINT AUTO_INCREMENT , `fecha` VARCHAR(64) , `proximoControl` VARCHAR(64) , `temperatura` FLOAT NOT NULL , `peso` FLOAT NOT NULL , `altura` FLOAT NOT NULL , `diagnostico` VARCHAR(255) NOT NULL , `veterinario_id` BIGINT NOT NULL , `ficha_id` BIGINT , PRIMARY KEY (`ID`) ) 
+∞01:33:46.912 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ,`nombreApellido` ,`email` ,`direccion` ,`telefonoFijo` ,`telefonoMovil` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
+ö01:33:46.913 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'ID' in Persona object
+∞01:33:46.914 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `persona` (`nombre` ,`apellido` ,`rut` ,`nombreApellido` ,`email` ,`direccion` ,`telefonoFijo` ,`telefonoMovil` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
+ö01:33:46.914 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '2' from keyholder to 'ID' in Persona object
+∑01:33:46.936 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `ficha` (`numeroFicha` ,`pacienteNombre` ,`especie` ,`fechaNacimiento` ,`sexo` ,`raza` ,`color` ,`tipo` ,`duenio_id` ) VALUES (?,?,?,?,?,?,?,?,?)' and 9 args, changed 1 rows
+ò01:33:46.937 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'ID' in Ficha object
+∂01:33:46.956 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `persona` WHERE `ID` = ?' and 1 args, got 1 result
+¥01:33:46.958 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `ficha` WHERE `ID` = ?' and 1 args, got 1 result
+≥01:33:46.965 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - insert data with statement 'INSERT INTO `control` (`fecha` ,`proximoControl` ,`temperatura` ,`peso` ,`altura` ,`diagnostico` ,`veterinario_id` ,`ficha_id` ) VALUES (?,?,?,?,?,?,?,?)' and 8 args, changed 1 rows
+ö01:33:46.965 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - assigned id '1' from keyholder to 'ID' in Control object
+ï01:33:46.984 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.StatementBuilder - built statement SELECT * FROM `control` WHERE `ficha_id` = ? 
+∞01:33:46.985 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - prepared statement 'SELECT * FROM `control` WHERE `ficha_id` = ? ' with 1 args
+¶01:33:46.987 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - starting iterator @567623592 for 'SELECT * FROM `control` WHERE `ficha_id` = ? '
+∂01:33:46.989 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.mapped.BaseMappedStatement - query-for-id using 'SELECT * FROM `persona` WHERE `ID` = ?' and 1 args, got 1 result
+}01:33:46.989 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.stmt.SelectIterator - closed iterator @567623592 after 1 rows
+á01:33:46.995 [ForkJoinPool-1-worker-1] DEBUG cl.ucn.disc.pdbp.tdd.dao.StorageTest - Ficha: cl.ucn.disc.pdbp.tdd.model.Ficha@18d71920[
 	  ID=1,
   color=Cafe Claro,
-A  controles=com.j256.ormlite.dao.LazyForeignCollection@f2db1ae{
-2    cl.ucn.disc.pdbp.tdd.model.Control@6200e0f8[
+B  controles=com.j256.ormlite.dao.LazyForeignCollection@49b55c0f{
+2    cl.ucn.disc.pdbp.tdd.model.Control@24af9e04[
       ID=1,
       altura=1.2,
       diagnostico=Pukes,
-/      fecha=java.time.ZonedDateTime@5fd51231[
-4        dateTime=java.time.LocalDateTime@4a919b3a[
-.          date=java.time.LocalDate@2ff3b5b0[
+/      fecha=java.time.ZonedDateTime@585e1fe7[
+4        dateTime=java.time.LocalDateTime@4a06d9cb[
+.          date=java.time.LocalDate@12012131[
             day=20,
             month=5,
             year=2020
           ],
-.          time=java.time.LocalTime@58c06ee5[
-            hour=0,
-            minute=21,
-            nano=220000000,
-            second=7
+.          time=java.time.LocalTime@3a88b5b1[
+            hour=1,
+            minute=33,
+            nano=964000000,
+            second=46
           ]
         ],
-/        offset=java.time.ZoneOffset@220e761a[
+/        offset=java.time.ZoneOffset@4cea60ee[
           totalSeconds=-14400
         ],
--        zone=java.time.ZoneOffset@220e761a[
+-        zone=java.time.ZoneOffset@4cea60ee[
           totalSeconds=-14400
         ]
 
       ],
-8      ficha=cl.ucn.disc.pdbp.tdd.model.Ficha@378cb35c,
+8      ficha=cl.ucn.disc.pdbp.tdd.model.Ficha@18d71920,
       peso=20.0,
-7      proximoControl=java.time.ZonedDateTime@78a7df3[
-4        dateTime=java.time.LocalDateTime@24e42c53[
-.          date=java.time.LocalDate@11ee980b[
-            day=20,
+8      proximoControl=java.time.ZonedDateTime@25e14ba8[
+4        dateTime=java.time.LocalDateTime@450da6d2[
+.          date=java.time.LocalDate@15ba7ace[
+            day=27,
             month=5,
             year=2020
           ],
-.          time=java.time.LocalTime@4f41c87f[
-            hour=0,
-            minute=21,
-            nano=220000000,
-            second=7
+.          time=java.time.LocalTime@3f7598d0[
+            hour=1,
+            minute=33,
+            nano=964000000,
+            second=46
           ]
         ],
-/        offset=java.time.ZoneOffset@220e761a[
+/        offset=java.time.ZoneOffset@4cea60ee[
           totalSeconds=-14400
         ],
--        zone=java.time.ZoneOffset@220e761a[
+-        zone=java.time.ZoneOffset@4cea60ee[
           totalSeconds=-14400
         ]
 
       ],
       temperatura=39.0,
-@      veterinario=cl.ucn.disc.pdbp.tdd.model.Persona@1bf05181[
+@      veterinario=cl.ucn.disc.pdbp.tdd.model.Persona@1066389d[
         ID=2,
         apellido=Retamal,
 $        direccion=18 de sept #449,
@@ -94,7 +93,7 @@
 	      ]
     ]
   },
-7  duenio=cl.ucn.disc.pdbp.tdd.model.Persona@1ef36018[
+7  duenio=cl.ucn.disc.pdbp.tdd.model.Persona@38753775[
     ID=1,
     apellido=Chirino,
      direccion=18 de sept #449,
@@ -106,38 +105,38 @@
     telefonoMovil=994018727
   ],
   especie=Perro,
-5  fechaNacimiento=java.time.ZonedDateTime@7bb89d0d[
-0    dateTime=java.time.LocalDateTime@3a7bb035[
-*      date=java.time.LocalDate@239e92a2[
+5  fechaNacimiento=java.time.ZonedDateTime@7edf56bf[
+0    dateTime=java.time.LocalDateTime@6d7fe2ac[
+*      date=java.time.LocalDate@4cfc8d4e[
         day=20,
         month=5,
         year=2020
 
       ],
-*      time=java.time.LocalTime@2668d569[
-        hour=0,
-        minute=21,
-        nano=175000000,
-        second=7
+*      time=java.time.LocalTime@5da3c53b[
+        hour=1,
+        minute=33,
+        nano=928000000,
+        second=46
 	      ]
     ],
-+    offset=java.time.ZoneOffset@220e761a[
++    offset=java.time.ZoneOffset@4cea60ee[
       totalSeconds=-14400
     ],
-)    zone=java.time.ZoneOffset@220e761a[
+)    zone=java.time.ZoneOffset@4cea60ee[
       totalSeconds=-14400
     ]
   ],
   numeroFicha=PA-001,
   pacienteNombre=Yaya,
   raza=Labrador,
-2  sexo=cl.ucn.disc.pdbp.tdd.model.Sexo@1907645c[
+2  sexo=cl.ucn.disc.pdbp.tdd.model.Sexo@59cd0a9e[
     name=HEMBRA,
     ordinal=1
   ],
-2  tipo=cl.ucn.disc.pdbp.tdd.model.Tipo@294613b2[
+2  tipo=cl.ucn.disc.pdbp.tdd.model.Tipo@630b8b4c[
     name=EXTERNO,
     ordinal=1
   ]
 ]
-x00:21:07.483 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - closed connection #588887210
+y01:33:47.004 [ForkJoinPool-1-worker-1] DEBUG com.j256.ormlite.jdbc.JdbcConnectionSource - closed connection #1482871897
