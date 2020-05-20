@@ -17,7 +17,6 @@ import java.util.List;
  */
 public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
 
-
     private final Dao<T, K> theDao;
 
     /**

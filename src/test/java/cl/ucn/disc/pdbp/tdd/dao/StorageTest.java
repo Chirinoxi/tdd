@@ -4,8 +4,11 @@ import cl.ucn.disc.pdbp.tdd.model.Ficha;
 import cl.ucn.disc.pdbp.tdd.model.Persona;
 import cl.ucn.disc.pdbp.tdd.model.Sexo;
 import cl.ucn.disc.pdbp.tdd.model.Tipo;
+import cl.ucn.disc.pdbp.tdd.model.Control;
+import cl.ucn.disc.pdbp.tdd.utils.Entity;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -16,9 +19,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
-import cl.ucn.disc.pdbp.tdd.utils.Entity;
+import java.util.ArrayList;
 
 /**
  * Storage Test
@@ -85,7 +89,6 @@ public final class StorageTest {
 
     @Test
     public void testRepositoryFicha(){
-
 
         // We configure the test database to use (in RAM memory)
         String databaseUrl = "jdbc:h2:mem:fivet_db";
@@ -173,7 +176,71 @@ public final class StorageTest {
             log.error("Error !!", e);
 
         }
+    }
 
+    @Test
+    public void testRepositoryControl(){
+
+        // We configure the test database to use (in RAM memory)
+        String databaseUrl = "jdbc:h2:mem:fivet_db";
+
+        // Connection Source: autoclose with the try/catch
+        try(ConnectionSource connectionSource = new JdbcConnectionSource(databaseUrl)){
+
+            // Create the table from the Persona annotations.
+            TableUtils.createTableIfNotExists(connectionSource, Persona.class);
+            TableUtils.createTableIfNotExists(connectionSource, Ficha.class);
+            TableUtils.createTableIfNotExists(connectionSource, Control.class);
+
+            Repository<Ficha, Long> fichaRepo = new RepositoryOrmLite(connectionSource, Ficha.class);
+            Repository<Persona, Long> personaRepo = new RepositoryOrmLite(connectionSource, Persona.class);
+            Repository<Control, Long> controlRepo = new RepositoryOrmLite(connectionSource, Control.class);
+
+            // 1. We create a persona from a Repository.
+            Persona persona = new Persona("Bastihan", "Chirino", "20.212.289-2", "18 de sept #449", 552246223, 994018727, "bcf1999@hotmail.com");
+            Persona veterinario = new Persona("Manuel", "Retamal", "13.642.156-5", "18 de sept #449", 552246223, 989015016, "mretamal@iff.cl");
+
+            if(!(personaRepo.create(persona) & personaRepo.create(veterinario))){
+                Assertions.fail("Cannot create persona !!");
+            }
+
+            //2. Instanciar una Ficha
+            Ficha ficha = new Ficha("PA-001",
+                    "Yaya",
+                    "Perro",
+                    ZonedDateTime.now(),
+                    Sexo.HEMBRA,
+                    "Labrador",
+                    "Cafe Claro",
+                    Tipo.EXTERNO,
+                    persona);
+
+            //3. Creamos repositorio para ficha e insertamos en la BD.
+            if(!fichaRepo.create(ficha)){ Assertions.fail("We cannot create ficha !!");}
+
+            //4.- Obtener una ficha y revisar si sus atributos son distinto de null.
+            Ficha fichaDB = fichaRepo.findById(1L);
+
+            Assertions.assertEquals(ficha.getPacienteNombre(), fichaDB.getPacienteNombre(), "(Ficha): Nombres aren't equals !");
+            Assertions.assertEquals(ficha.getRaza(), fichaDB.getRaza(), " (Ficha): Raza's are not equals !");
+            Assertions.assertEquals(ficha.getNumeroFicha(), fichaDB.getNumeroFicha(), "(Ficha): Numero de Ficha are not equals !");
+
+            Control control = new Control(ZonedDateTime.now(), ZonedDateTime.now(), 39.0f, 20.0f, 1.2f, "Pukes", veterinario, fichaDB);
+
+            if(!controlRepo.create(control)){
+                Assertions.fail("We cannot create the control !!");
+            }
+
+            Entity entity = new Entity(); // We use this variable to print the data of any object.
+
+            // We assign the list of controls to the ficha
+            fichaRepo.update(fichaDB);
+
+            log.debug("Ficha: {}", entity.toString(fichaDB));
+
+        }catch(IOException | SQLException e){
+            log.error("Error !!", e);
+        }
 
 
     }

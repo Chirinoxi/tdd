@@ -1,16 +1,41 @@
 package cl.ucn.disc.pdbp.tdd.model;
 
+import cl.ucn.disc.pdbp.tdd.dao.ZonedDateTimeType;
+import com.j256.ormlite.field.DatabaseField;
+
 import java.time.ZonedDateTime;
 
 public final class Control {
 
+    /**
+     * The id
+     */
+    @DatabaseField(generatedId = true)
+    private Long ID;
+
+    @DatabaseField(persisterClass = ZonedDateTimeType.class)
     private ZonedDateTime fecha;
+
+    @DatabaseField(persisterClass = ZonedDateTimeType.class)
     private ZonedDateTime proximoControl;
+
+    @DatabaseField(canBeNull = false)
     private float temperatura;
+
+    @DatabaseField(canBeNull = false)
     private float peso;
+
+    @DatabaseField(canBeNull = false)
     private float altura;
+
+    @DatabaseField(canBeNull = false)
     private String diagnostico;
+
+    @DatabaseField(foreign = true, canBeNull = false, foreignAutoRefresh = true)
     private Persona veterinario;
+
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    private Ficha ficha;
 
     private static Control _instance;
 
@@ -22,8 +47,9 @@ public final class Control {
      * @param altura
      * @param diagnostico
      * @param veterinario
+     * @param ficha
      */
-    public Control(ZonedDateTime fecha, ZonedDateTime proximoControl, float temperatura, float peso, float altura, String diagnostico, Persona veterinario) {
+    public Control(ZonedDateTime fecha, ZonedDateTime proximoControl, float temperatura, float peso, float altura, String diagnostico, Persona veterinario, Ficha ficha) {
         this.fecha = fecha;
         this.proximoControl = proximoControl;
         this.temperatura = temperatura;
@@ -31,12 +57,14 @@ public final class Control {
         this.altura = altura;
         this.diagnostico = diagnostico;
         this.veterinario = veterinario;
+        this.ficha = ficha;
     }
+
 
     /**
      * Constructor privado para aplicar patron SINGLETON.
      */
-    private Control(){// Nada Aquí
+    Control(){// Nada Aquí
 
     }
 
@@ -49,6 +77,14 @@ public final class Control {
             _instance = new Control();
         }
         return _instance;
+    }
+
+    /**
+     *
+     * @ the id of a Control object.
+     */
+    public Long getID() {
+        return ID;
     }
 
     /**
@@ -106,4 +142,21 @@ public final class Control {
     public Persona getVeterinario() {
         return veterinario;
     }
+
+    /**
+     *
+     * @return la ficha asociada a un control.
+     */
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    /**
+     *
+     * @param ficha nueva ficha para ser asignada.
+     */
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
+
 }

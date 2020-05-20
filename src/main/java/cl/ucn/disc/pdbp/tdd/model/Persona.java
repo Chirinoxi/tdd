@@ -15,7 +15,7 @@ public final class Persona {
      * The id: Primary key (autoincrement) of the table.
      */
     @DatabaseField(generatedId = true)
-    private Long id;
+    private Long ID;
 
     /**
      * Name of a person.
@@ -85,9 +85,6 @@ public final class Persona {
         }
         return _instance;
     }
-
-
-
 
 
     /**
@@ -170,7 +167,7 @@ public final class Persona {
      * @return
      */
     public Long getId() {
-        return id;
+        return ID;
     }
 
     /**

@@ -1,9 +1,14 @@
 package cl.ucn.disc.pdbp.tdd.model;
 
 import cl.ucn.disc.pdbp.tdd.dao.ZonedDateTimeType;
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public final class Ficha {
 
@@ -11,7 +16,7 @@ public final class Ficha {
      * The id
      */
     @DatabaseField(generatedId = true)
-    private Long Id;
+    private Long ID;
 
     @DatabaseField(unique = true)
     private String numeroFicha;
@@ -39,6 +44,13 @@ public final class Ficha {
 
     @DatabaseField(foreign = true, canBeNull = false, foreignAutoRefresh = true)
     private Persona duenio;
+
+    //@DatabaseField(foreign = true, canBeNull = false, foreignAutoRefresh = true)
+    //private ForeignCollection<Control> controles;
+
+    @ForeignCollectionField()
+    private ForeignCollection<Control> controles;
+
 
     /**
      *  Constructor de una ficha médica
@@ -76,7 +88,7 @@ public final class Ficha {
      * @return the id of a Ficha.
      */
     public Long getId() {
-        return Id;
+        return ID;
     }
 
     /**
@@ -157,5 +169,21 @@ public final class Ficha {
      */
     public void setDuenio(Persona newDuenio) {
         this.duenio = newDuenio;
+    }
+
+    /**
+     *
+     * @return The list of all the controls of a pet.
+     */
+    public List<Control> getControles() {
+        return Collections.unmodifiableList(new ArrayList<>(this.controles));
+    }
+
+    /**
+     *
+     * @param controles
+     */
+    public void setControles(ForeignCollection<Control> controles) {
+        this.controles = controles;
     }
 }
