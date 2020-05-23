@@ -35,7 +35,6 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
         }
     }
 
-
     @Override
     public List<T> findAll() {
         try{
@@ -43,8 +42,6 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
-
-
     }
 
     @Override
@@ -78,8 +75,7 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
     public boolean create(T entity) {
 
         try {
-            theDao.create(entity);
-            return true;
+            return theDao.create(entity) == 1;
         } catch (SQLException e) {
             //return false;
             throw new RuntimeException(e);

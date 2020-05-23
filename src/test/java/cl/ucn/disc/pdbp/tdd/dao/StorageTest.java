@@ -112,7 +112,7 @@ public final class StorageTest {
             }
 
             //2. Instanciar una Ficha
-            Ficha ficha = new Ficha("PA-001",
+            Ficha ficha = new Ficha(1L,
                     "Yaya",
                     "Perro",
                     ZonedDateTime.now(),
@@ -154,7 +154,7 @@ public final class StorageTest {
 
             if(!createPersona2){
 
-                Assertions.     fail("Cannot create persona 2!!");
+                Assertions.fail("Cannot create persona 2!!");
             }
 
             fichaDB.setDuenio(persona2);
@@ -205,7 +205,7 @@ public final class StorageTest {
             }
 
             //2. Instanciar una Ficha
-            Ficha ficha = new Ficha("PA-001",
+            Ficha ficha = new Ficha(2L,
                     "Yaya",
                     "Perro",
                     ZonedDateTime.now(),
