@@ -2,23 +2,24 @@ package cl.ucn.disc.pdbp.tdd;
 
 import cl.ucn.disc.pdbp.tdd.dao.Repository;
 import cl.ucn.disc.pdbp.tdd.dao.RepositoryOrmLite;
+
 import cl.ucn.disc.pdbp.tdd.model.Control;
 import cl.ucn.disc.pdbp.tdd.model.Ficha;
 import cl.ucn.disc.pdbp.tdd.model.Persona;
+
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import org.slf4j.LoggerFactory;
 import org.apache.commons.lang3.StringUtils;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Implementation of the contratos
@@ -31,8 +32,16 @@ public class ContratosImpl implements Contratos{
      */
     private static final Logger log = LoggerFactory.getLogger(ContratosImpl.class);
 
+    /**
+     * Connection Attribute.
+     */
     private ConnectionSource connectionSource;
 
+    //FIXME: Verificar por que el atributo connectionSource debe ser final.
+
+    /**
+     *
+     */
     Repository<Ficha, Long> repoFicha;
     Repository<Persona, Long> repoPersona;
     Repository<Control, Long> repoControl;
@@ -40,7 +49,7 @@ public class ContratosImpl implements Contratos{
     public ContratosImpl(String databaseUrl) {
 
         if(databaseUrl == null){
-            throw new illegalArgumentException("Can't create Contratos with databaseUrl null dude !");
+            throw new IllegalArgumentException("Can't create Contratos with databaseUrl null dude !");
         }
 
         try{
@@ -48,60 +57,85 @@ public class ContratosImpl implements Contratos{
             // The Connection
             this.connectionSource = new JdbcConnectionSource(databaseUrl);
 
-            // The creation of the tables
+            // The creation of the tables.
             TableUtils.createTableIfNotExists(connectionSource, Ficha.class);
             TableUtils.createTableIfNotExists(connectionSource, Persona.class);
             TableUtils.createTableIfNotExists(connectionSource, Control.class);
 
-            this.repoFicha = new RepositoryOrmLite<>(this.connectionSource, Ficha.class);
-            this.repoControl = new RepositoryOrmLite<>(this.connectionSource, Control.class);
-            this.repoPersona = new RepositoryOrmLite<>(this.connectionSource, Persona.class);
+            this.repoFicha = new RepositoryOrmLite<>(connectionSource, Ficha.class);
+            this.repoControl = new RepositoryOrmLite<>(connectionSource, Control.class);
+            this.repoPersona = new RepositoryOrmLite<>(connectionSource, Persona.class);
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException throwable) {
+            throw new RuntimeException(throwable);
         }
     }
 
     /**
+     * Contrato: C-01 Registrar los datos de un paciente.
+     *
      * @param ficha to save in the backend.
-     * @return the {@link Ficha} saved.
+     * @return the {@link Ficha} saved in the backend.
      */
     @Override
     public Ficha registrarPaciente(Ficha ficha) {
-        throw new NotImplementedException("Not implemented yet !!!");
+
+        // We need to assure the not nullity
+        if(ficha == null) throw new NullPointerException("The ficha object provided was null !");
+
+        try{
+            this.repoFicha.create(ficha);
+        }catch(Exception throwable){
+            throw new RuntimeException(throwable);
+        }
+        return this.repoFicha.findById(ficha.getId());
     }
 
     /**
+     * Contrato: C-02 Registrar los datos de una persona.
+     *
      * @param persona to save in the backend.
      * @return the {@link Persona} saved.
      */
     @Override
     public Persona registrarPersona(Persona persona) {
-        return null;
+
+        if (persona == null) throw new NullPointerException("The persona object shouldn't be null !!!");
+
+        try{
+            log.debug("Insertando persona en la base de datos.....!!");
+            this.repoPersona.create(persona);
+
+        }catch(Exception throwable){
+            throw new RuntimeException(throwable);
+        }
+        return this.repoPersona.findById(persona.getId());
     }
 
     /**
-     * @param trozo to filter.
-     * @return a list of Strings.
+     * Contrato: C-03 buscar una ficha.
+     *
+     * @param query to filter.
+     * @return the {@link List} of {@link Ficha}.
      */
-    public List<Ficha> buscarFicha(String trozo) {
-
+    @Override
+    public List<Ficha> buscarFicha(String query) {
         //Nullity
-        if(trozo == null) throw new IllegalArgumentException("Trozo was null !");
+        if(query == null) throw new IllegalArgumentException("Query was null !");
 
-        List<Ficha> fichas = new ArrayList<Ficha>();
+        List<Ficha> fichas = new ArrayList<>();
 
         try {
             // Find by number
-            if (StringUtils.isNumeric(trozo)) {
+            if (StringUtils.isNumeric(query)) {
 
-                // 1. All the fichas with a number
+                // 1. All the fichas with a number.
                 log.debug("Finding all the fichas with a associated numero......");
-                fichas.add(this.repoFicha.findAll("numero", trozo));
+                fichas.addAll(this.repoFicha.findAll("numeroFicha", query));
 
-                // 2. Find by rut of duenio
+                // 2. Find by rut of duenio.
                 QueryBuilder<Persona, Long> queryPersona = this.repoPersona.getQuery();
-                queryPersona.where().like("rut", "%" + trozo + "%");
+                queryPersona.where().like("rut", "%" + query + "%");
 
                 // Run the join
                 fichas.addAll(this.repoFicha
@@ -116,12 +150,12 @@ public class ContratosImpl implements Contratos{
             fichas.addAll(this.repoFicha.
                     getQuery().
                     where().
-                    like("pacienteNombre", "%" + trozo + "%").
+                    like("pacienteNombre", "%" + query + "%").
                     query());
 
-            // 4. Find by rut nombre of duenio
+            // 4. Find by rut nombre of duenio.
             QueryBuilder<Persona, Long> queryPersona = this.repoPersona.getQuery();
-            queryPersona.where().like("nombre", "%" + trozo + "%");
+            queryPersona.where().like("nombre", "%" + query + "%");
 
             // Run the join
             fichas.addAll(this.repoFicha
@@ -133,5 +167,7 @@ public class ContratosImpl implements Contratos{
 
             throw new RuntimeException(ex);
         }
+
+        return fichas;
     }
 }
