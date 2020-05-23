@@ -19,7 +19,7 @@ public final class Ficha {
     private Long ID;
 
     @DatabaseField(unique = true)
-    private String numeroFicha;
+    private Long numeroFicha;
 
     @DatabaseField
     private String pacienteNombre;
@@ -64,7 +64,8 @@ public final class Ficha {
      * @param tipo
      * @param duenio
      */
-    public Ficha(String numeroFicha, String pacienteNombre, String especie, ZonedDateTime fechaNacimiento, Sexo sexo, String raza, String color, Tipo tipo, Persona duenio) {
+    public Ficha(Long numeroFicha, String pacienteNombre, String especie, ZonedDateTime fechaNacimiento, Sexo sexo, String raza, String color, Tipo tipo, Persona duenio){
+
         this.numeroFicha = numeroFicha;
         this.pacienteNombre = pacienteNombre;
         this.especie = especie;
@@ -95,7 +96,7 @@ public final class Ficha {
      *
      * @return numero de ficha.
      */
-    public String getNumeroFicha() {
+    public Long getNumeroFicha() {
         return numeroFicha;
     }
 

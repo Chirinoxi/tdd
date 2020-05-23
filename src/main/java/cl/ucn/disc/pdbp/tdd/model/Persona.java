@@ -113,8 +113,16 @@ public final class Persona {
 
         if (nombre == null || apellido == null || rut == null || direccion == null || fonoFijo == null || fonoMovil == null || correo == null) {
             throw new NullPointerException("Parameters with null values");
-        }else if (!rutIsValid(rut)) {
-            throw new RuntimeException();
+        } else if (!rutIsValid(rut)) {
+            throw new RuntimeException("The rut it is not valid !!!");
+        } else if (nombre.equals("") || nombre.length() <= 2) {
+            throw new IllegalArgumentException("You need to check the specs of the nombre attribute !");
+        } else if (fonoFijo < 1000000) {
+            throw new IllegalArgumentException("You need to check the specs of the telefonoFijo attribute !");
+        }else if (fonoMovil < 1000000){
+            throw new IllegalArgumentException("You need to check the specs of the telefonoMovil attribute !");
+        }else if(correo.equals("")){
+            throw new IllegalArgumentException("You need to check the specs of the email attribute !");
         }else{
             this.nombre = nombre;
             this.apellido = apellido;
@@ -124,7 +132,6 @@ public final class Persona {
             this.telefonoFijo = fonoFijo;
             this.telefonoMovil = fonoMovil;
             this.email = correo;
-
         }
     }
 
@@ -167,7 +174,7 @@ public final class Persona {
      * @return
      */
     public Long getId() {
-        return ID;
+        return this.ID;
     }
 
     /**
@@ -175,7 +182,7 @@ public final class Persona {
      * @return
      */
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     /**
