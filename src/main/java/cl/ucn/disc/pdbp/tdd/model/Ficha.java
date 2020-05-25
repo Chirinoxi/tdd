@@ -165,14 +165,6 @@ public final class Ficha {
     }
 
     /**
-     * This method set's the atributte person of a ficha.
-     * @param newDuenio
-     */
-    public void setDuenio(Persona newDuenio) {
-        this.duenio = newDuenio;
-    }
-
-    /**
      *
      * @return The list of all the controls of a pet.
      */
@@ -180,11 +172,4 @@ public final class Ficha {
         return Collections.unmodifiableList(new ArrayList<>(this.controles));
     }
 
-    /**
-     *
-     * @param controles
-     */
-    public void setControles(ForeignCollection<Control> controles) {
-        this.controles = controles;
-    }
 }

@@ -1,7 +1,4 @@
 package cl.ucn.disc.pdbp.tdd.dao;
-
-
-import checkers.units.quals.K;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -9,7 +6,6 @@ import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
 import java.util.List;
-
 
 /**
  * ORM Repository Class

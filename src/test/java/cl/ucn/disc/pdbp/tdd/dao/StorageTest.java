@@ -157,7 +157,7 @@ public final class StorageTest {
                 Assertions.fail("Cannot create persona 2!!");
             }
 
-            fichaDB.setDuenio(persona2);
+            //fichaDB.setDuenio(persona2);
 
             fichaRepo.update(fichaDB);
 
