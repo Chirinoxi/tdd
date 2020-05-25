@@ -1,9 +1,14 @@
 package cl.ucn.disc.pdbp.tdd.model;
 
 import cl.ucn.disc.pdbp.tdd.dao.ZonedDateTimeType;
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public final class Ficha {
 
@@ -11,10 +16,10 @@ public final class Ficha {
      * The id
      */
     @DatabaseField(generatedId = true)
-    private Long Id;
+    private Long ID;
 
     @DatabaseField(unique = true)
-    private String numeroFicha;
+    private Long numeroFicha;
 
     @DatabaseField
     private String pacienteNombre;
@@ -40,6 +45,13 @@ public final class Ficha {
     @DatabaseField(foreign = true, canBeNull = false, foreignAutoRefresh = true)
     private Persona duenio;
 
+    //@DatabaseField(foreign = true, canBeNull = false, foreignAutoRefresh = true)
+    //private ForeignCollection<Control> controles;
+
+    @ForeignCollectionField()
+    private ForeignCollection<Control> controles;
+
+
     /**
      *  Constructor de una ficha médica
      * @param numeroFicha
@@ -52,7 +64,8 @@ public final class Ficha {
      * @param tipo
      * @param duenio
      */
-    public Ficha(String numeroFicha, String pacienteNombre, String especie, ZonedDateTime fechaNacimiento, Sexo sexo, String raza, String color, Tipo tipo, Persona duenio) {
+    public Ficha(Long numeroFicha, String pacienteNombre, String especie, ZonedDateTime fechaNacimiento, Sexo sexo, String raza, String color, Tipo tipo, Persona duenio){
+
         this.numeroFicha = numeroFicha;
         this.pacienteNombre = pacienteNombre;
         this.especie = especie;
@@ -76,14 +89,14 @@ public final class Ficha {
      * @return the id of a Ficha.
      */
     public Long getId() {
-        return Id;
+        return ID;
     }
 
     /**
      *
      * @return numero de ficha.
      */
-    public String getNumeroFicha() {
+    public Long getNumeroFicha() {
         return numeroFicha;
     }
 
@@ -152,10 +165,11 @@ public final class Ficha {
     }
 
     /**
-     * This method set's the atributte person of a ficha.
-     * @param newDuenio
+     *
+     * @return The list of all the controls of a pet.
      */
-    public void setDuenio(Persona newDuenio) {
-        this.duenio = newDuenio;
+    public List<Control> getControles() {
+        return Collections.unmodifiableList(new ArrayList<>(this.controles));
     }
+
 }

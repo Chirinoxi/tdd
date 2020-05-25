@@ -1,14 +1,11 @@
 package cl.ucn.disc.pdbp.tdd.dao;
-
-
-import checkers.units.quals.K;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
 import java.util.List;
-
 
 /**
  * ORM Repository Class
@@ -16,7 +13,6 @@ import java.util.List;
  * @param <K>
  */
 public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
-
 
     private final Dao<T, K> theDao;
 
@@ -35,7 +31,6 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
         }
     }
 
-
     @Override
     public List<T> findAll() {
         try{
@@ -43,8 +38,24 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
         }catch(SQLException e){
             throw new RuntimeException(e);
         }
+    }
 
+    @Override
+    public List<T> findAll(String key, Object value) {
+        try{
+            return theDao.queryForEq(key, value);
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 
+    /**
+     *
+     * @return
+     */
+    @Override
+    public QueryBuilder<T, K> getQuery() {
+        return theDao.queryBuilder();
     }
 
     @Override
@@ -60,11 +71,10 @@ public final class RepositoryOrmLite<T, K> implements Repository<T, K> {
     public boolean create(T entity) {
 
         try {
-            theDao.create(entity);
-            return true;
+            return theDao.create(entity) == 1;
         } catch (SQLException e) {
-            return false;
-            //throw new RuntimeException(e);
+            //return false;
+            throw new RuntimeException(e);
         }
 
 
