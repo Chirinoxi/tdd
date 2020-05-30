@@ -170,4 +170,15 @@ public class ContratosImpl implements Contratos{
 
         return fichas;
     }
+
+    /**
+     * Contrato: C-?? buscar todas las fichas.
+     *
+     * @return the {@link List} of all the fichas.
+     */
+    @Override
+    public List<Ficha> getAllFichas() {
+
+        return this.repoFicha.findAll();
+    }
 }

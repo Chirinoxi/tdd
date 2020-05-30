@@ -168,7 +168,7 @@ public final class StorageTest {
 
             // We test the delete method of the DAO
             fichaRepo.delete(ficha.getId());
-            Assertions.assertEquals(fichaRepo.findById(ficha.getId()), null, "(Ficha): ID's aren't equals !");
+            Assertions.assertNull(fichaRepo.findById(ficha.getId()), "(Ficha): ID's aren't equals !");
 
 
         }catch(IOException | SQLException e){
