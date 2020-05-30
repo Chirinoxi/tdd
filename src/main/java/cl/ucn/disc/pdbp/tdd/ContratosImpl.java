@@ -178,7 +178,6 @@ public class ContratosImpl implements Contratos{
      */
     @Override
     public List<Ficha> getAllFichas() {
-
         return this.repoFicha.findAll();
     }
 }
