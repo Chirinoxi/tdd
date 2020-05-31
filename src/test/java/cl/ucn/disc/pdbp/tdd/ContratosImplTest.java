@@ -74,6 +74,7 @@ public final class ContratosImplTest {
         Assertions.assertEquals(ficha.getDuenio().getNombreApellido(), fichaDB.getDuenio().getNombreApellido(), "The duenios doesn't have the same name !!");
         Assertions.assertEquals(ficha.getDuenio().getEmail(), fichaDB.getDuenio().getEmail(), "The duenios doesn't have the same email address !!");
 
+        //TODO: Mejorar cobertura.
 
     }
 
