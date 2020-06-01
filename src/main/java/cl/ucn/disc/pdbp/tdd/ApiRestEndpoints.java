@@ -81,6 +81,10 @@ public final class ApiRestEndpoints {
 
     }
 
+    /**
+     * Convert all the persona's in the DB to json.
+     * @param ctx
+     */
     public static void getPersonas(Context ctx){
 
         List<Persona> personas = CONTRATOS.getAllPersonas();
@@ -89,30 +93,86 @@ public final class ApiRestEndpoints {
 
     }
 
-    public static void getControlesFicha(Context context) {
+    /**
+     *  Insert a persona in the DB
+     * @param ctx context
+     */
+    public static void insertarPersonas(Context ctx){
 
-        List<Ficha> fichaDB = CONTRATOS.buscarFicha(context.pathParam("numeroFicha"));
+        String nombre = ctx.formParam("nombre");
+        String apellido = ctx.formParam("nombre");
+        String rutOk = ctx.formParam("rut");;
+        String direccion = ctx.formParam("direccion");
+        String email = ctx.formParam("email");
+        Integer numFijo = Integer.parseInt(ctx.formParam("numeroFijo"));
+        Integer numMovil = Integer.parseInt(ctx.formParam("numeroMovil"));
+
+        Persona persona = new Persona(nombre, apellido, rutOk, direccion, numFijo, numMovil, email);
+
+        CONTRATOS.registrarPersona(persona);
+
+    }
+
+    /**
+     * Insert a ficha in the DB
+     * @param ctx context
+     */
+    public static void insertarFicha(Context ctx){
+
+        Long numeroFicha = Long.parseLong(ctx.formParam("numeroFicha"));
+        String pacienteNombre = ctx.formParam("pacienteNombre");
+        String especie = ctx.formParam("especie");
+        String fechaNacimiento = ctx.formParam("fechaNacimiento");
+
+        String sexoString = ctx.formParam("sexo");
+        Sexo sexo;
+
+        String tipoString =  ctx.formParam("tipo");
+        Tipo tipo;
+
+        if(sexoString.equalsIgnoreCase("macho")) sexo = Sexo.MACHO; else sexo = Sexo.HEMBRA;
+
+        if(tipoString.equalsIgnoreCase("interno")) tipo = Tipo.INTERNO; else tipo = Tipo.EXTERNO;
+
+        String raza = ctx.formParam("raza");
+        String color = ctx.formParam("color");
+
+
+        Long personaId = Long.parseLong(ctx.formParam("personaId"));
+        Persona persona = CONTRATOS.getPersonaById(personaId); // TODO: Consultar si la relación entre duenio y ficha se hace mediante ID o rut (Front-end).
+
+        Ficha ficha = new Ficha(numeroFicha, pacienteNombre, especie, ZonedDateTime.now(), sexo, raza, color, tipo, persona);
+        CONTRATOS.registrarPaciente(ficha);
+    }
+
+    /**
+     * Returns all the 'controles' associated to a ficha object as JSON
+     * @param ctx context
+     */
+    public static void getControlesFicha(Context ctx) {
+
+        List<Ficha> fichaDB = CONTRATOS.buscarFicha(ctx.pathParam("numeroFicha"));
 
         List<Control> controles = fichaDB.get(0).getControles();
 
-        context.json(controles);
+        ctx.json(controles);
 
     }
 
     /**
      * Returns JSON object with the data of a persona associated to a ficha.
      *
-     * @param context
+     * @param ctx Context
      */
-    public static void getDuenio(Context context) {
+    public static void getDuenio(Context ctx) {
 
 
-        List<Ficha> fichaDB = CONTRATOS.buscarFicha(context.pathParam("numeroFicha"));
+        List<Ficha> fichaDB = CONTRATOS.buscarFicha(ctx.pathParam("numeroFicha"));
 
         //.debug("Los controles solicitados {}", fichaDB.get(0).getDuenio());
         Persona duenioDB = fichaDB.get(0).getDuenio();
 
-        context.json(duenioDB);
+        ctx.json(duenioDB);
 
     }
 }

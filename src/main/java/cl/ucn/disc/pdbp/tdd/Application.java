@@ -80,31 +80,40 @@ public final class Application {
                 // Fichas
                 ApiBuilder.path("fichas", () -> {
 
-                    // C-01, Get -> /fichas
+                    // C-01, GET -> /fichas
                     ApiBuilder.get(ApiRestEndpoints::getAllFichas);
+                    // POST -> Insertar Ficha
+                    ApiBuilder.post(ApiRestEndpoints::insertarFicha);
 
-                    // C-02, Get -> /fichas/find/{query}
+                    // C-02
                     ApiBuilder.path("find/:query", () -> {
+                        //GET -> /fichas/find/{query}
                         ApiBuilder.get(ApiRestEndpoints::findFichas);
                     });
 
-                    // C-05, Get -> /fichas/{numeroFichas}/controles
+                    // C-05
                     ApiBuilder.path(":numeroFicha/controles", () -> {
+
+                        //GET -> /fichas/{numeroFichas}/controles
                         ApiBuilder.get(ApiRestEndpoints::getControlesFicha);
+
+                        //POST -> Agregar un control con un numero de ficha dado.
+
                     });
 
+                    // C-06
                     ApiBuilder.path(":numeroFicha/duenio", () -> {
+                        //  GET -> fichas/{numeroFicha}/controles
                         ApiBuilder.get(ApiRestEndpoints::getDuenio);
                     });
 
                 });
-
                 // Personas
                 ApiBuilder.path("personas", () -> {
-                    // C-03 Get -> /personas;
+                    // C-03 GET -> /personas;
                     ApiBuilder.get(ApiRestEndpoints::getPersonas);
 
-                    ApiBuilder.post(ApiRestEndpoints::getPersonas);
+                    ApiBuilder.post(ApiRestEndpoints::insertarPersonas);
                 });
 
             });

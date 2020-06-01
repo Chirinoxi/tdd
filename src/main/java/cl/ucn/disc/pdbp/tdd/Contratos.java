@@ -73,6 +73,12 @@ public interface Contratos {
     List<Ficha> getAllFichas();
 
     /**
+     * Contrato CW-01, Permite encontrar a una persona con un ID especifico.
+     * @return Persona Object
+     */
+    Persona getPersonaById(Long id);
+
+    /**
      * Contrato: C - ??, se encarga de retornar una ficha en especifico con el numero de ficha asociado.
      * @return: a Ficha object
      */

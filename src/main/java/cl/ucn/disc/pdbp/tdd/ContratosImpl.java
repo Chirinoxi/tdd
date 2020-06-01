@@ -216,6 +216,7 @@ public class ContratosImpl implements Contratos{
         return fichas;
     }
 
+
     /**
      * Contrato: C-?? buscar todas las fichas.
      *
@@ -226,11 +227,31 @@ public class ContratosImpl implements Contratos{
         return this.repoFicha.findAll();
     }
 
+    /**
+     * Contrato CW-01, Permite encontrar a una persona con un ID especifico.
+     *
+     * @param id
+     * @return Persona Object
+     */
+    @Override
+    public Persona getPersonaById(Long id) {
+        return this.repoPersona.findById(id);
+    }
+
+    /**
+     * Contrato: C - ??, se encarga de retornar una ficha en especifico con el numero de ficha asociado.
+     * @return: a Ficha object
+     */
     @Override
     public Ficha getFichaById(Long id) {
         return this.repoFicha.findById(id);
     }
 
+    /**
+     * Contrato: C-??, retorna todas las personas registradas en la BD.
+     *
+     * @return a List of personas.
+     */
     @Override
     public List<Persona> getAllPersonas() {
         return this.repoPersona.findAll();
