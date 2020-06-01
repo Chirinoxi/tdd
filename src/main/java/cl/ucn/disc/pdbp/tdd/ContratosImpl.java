@@ -113,7 +113,7 @@ public class ContratosImpl implements Contratos{
     }
 
     /**
-     * Contrato: C-03 buscar una ficha.
+     * Contrato: C-03 buscar una ficha. La búsqueda se realiza por numero de ficha, rut del dueño, nombre de paciente y nombre del dueño.
      *
      * @param query to filter.
      * @return the {@link List} of {@link Ficha}.
@@ -180,4 +180,15 @@ public class ContratosImpl implements Contratos{
     public List<Ficha> getAllFichas() {
         return this.repoFicha.findAll();
     }
+
+    @Override
+    public Ficha getFichaById(Long id) {
+        return this.repoFicha.findById(id);
+    }
+
+    @Override
+    public List<Persona> getAllPersonas() {
+        return this.repoPersona.findAll();
+    }
+
 }

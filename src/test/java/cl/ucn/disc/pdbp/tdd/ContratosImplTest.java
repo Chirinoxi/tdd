@@ -41,7 +41,6 @@ public final class ContratosImplTest {
         Assertions.assertEquals(personaDB.getTelefonoFijo(), persona.getTelefonoFijo(), "The telefonos fijos are not the same !!");
         Assertions.assertEquals(personaDB.getTelefonoMovil(), persona.getTelefonoMovil(), "The telefonos moviles are not the same !!");
 
-
     }
 
     @Test
@@ -63,7 +62,7 @@ public final class ContratosImplTest {
         Assertions.assertEquals(ficha.getId(), fichaDB.getId(), "Los identificadores no son los mismos !!");
         Assertions.assertEquals(ficha.getColor(), fichaDB.getColor(), "The color are not the same!!");
         Assertions.assertEquals(ficha.getEspecie(), fichaDB.getEspecie(), "The especies are not the same !!");
-        //Assertions.assertEquals(ficha.getFechaNacimiento(), fichaDB.getFechaNacimiento(), "The fecha de nacimiento are not the same !!");
+
         Assertions.assertEquals(ficha.getNumeroFicha(), fichaDB.getNumeroFicha(), "The numero the ficha are note the same !!");
         Assertions.assertEquals(ficha.getPacienteNombre(), fichaDB.getPacienteNombre(), "The paciente nombre are not the same!!");
         Assertions.assertEquals(ficha.getRaza(), fichaDB.getRaza(), "The raza's nombre are not the same!!");
@@ -73,8 +72,6 @@ public final class ContratosImplTest {
         Assertions.assertEquals(ficha.getDuenio().getRut(), fichaDB.getDuenio().getRut(), "The duenios are not the same !!");
         Assertions.assertEquals(ficha.getDuenio().getNombreApellido(), fichaDB.getDuenio().getNombreApellido(), "The duenios doesn't have the same name !!");
         Assertions.assertEquals(ficha.getDuenio().getEmail(), fichaDB.getDuenio().getEmail(), "The duenios doesn't have the same email address !!");
-
-        //TODO: Mejorar cobertura.
 
     }
 
@@ -98,7 +95,7 @@ public final class ContratosImplTest {
         contratos.registrarPaciente(ficha2);
         contratos.registrarPaciente(ficha3);
 
-        List<Ficha> listaFichas = contratos.buscarFicha("14");
+        List<Ficha> listaFichas = contratos.buscarFicha("19");
 
         log.debug("Lista de fichas: {}", listaFichas);
 

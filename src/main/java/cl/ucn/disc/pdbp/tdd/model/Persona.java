@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
  *
  */
 @DatabaseTable(tableName="persona")
+
 public final class Persona {
 
     /**

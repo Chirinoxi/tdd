@@ -1,11 +1,12 @@
 package cl.ucn.disc.pdbp.tdd;
 
-import cl.ucn.disc.pdbp.tdd.model.Ficha;
-import cl.ucn.disc.pdbp.tdd.model.Persona;
+import cl.ucn.disc.pdbp.tdd.model.*;
 import io.javalin.http.Context;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public final class ApiRestEndpoints {
 
     /**
      * API Rest route for find fichas
-     * @param ctx
+     * @param ctx Context
      */
     public static void findFichas(Context ctx){
 
@@ -58,18 +59,20 @@ public final class ApiRestEndpoints {
 
     public static void getPersonas(Context ctx){
 
-        List<Persona> personas = Arrays.asList(
-                new Persona("Ignacio", "Chirino", "19.445.801-0",
-                        "18 de Sept #449", 552246223, 953335379,
-                        "ichirino@gmail.com"),
+        List<Persona> personas = CONTRATOS.getAllPersonas();
 
-                new Persona("Bastihan", "Chirino", "20.212.289-2",
-                        "18 de sept #449", 552246223, 994018727,
-                        "bcf1999@hotmail.com")
-        );
-        // We send the list
         ctx.json(personas);
 
     }
 
+    public static void getControlesFicha(Context context) {
+
+
+        Ficha fichaDB = CONTRATOS.getFichaById(Long.parseLong(context.pathParam("numeroFicha")));
+
+        log.debug("Los controles solicitados {}", fichaDB.getControles());
+
+        context.json(fichaDB.getControles());
+
+    }
 }

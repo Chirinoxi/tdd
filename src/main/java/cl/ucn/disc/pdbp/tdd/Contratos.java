@@ -34,10 +34,24 @@ public interface Contratos {
      */
     List<Ficha> buscarFicha(String query);
 
-
     /**
      * Contrato: C-?? buscar todas las fichas.
      * @return the {@link List} of all the fichas.
      */
     List<Ficha> getAllFichas();
+
+    /**
+     * Contrato: C - ??, se encarga de retornar una ficha en especifico con el numero de ficha asociado.
+     * @return: a Ficha object
+     */
+    Ficha getFichaById(Long id);
+
+    /**
+     * Contrato: C-??, retorna todas las personas registradas en la BD.
+     *
+     * @return a List of personas.
+     */
+    List<Persona> getAllPersonas();
+
+
 }

@@ -64,6 +64,10 @@ public final class Application {
                         ApiBuilder.get(ApiRestEndpoints::findFichas);
                     });
 
+                    ApiBuilder.path(":numeroFicha/controles", () -> {
+                        ApiBuilder.get(ApiRestEndpoints::getControlesFicha);
+                    });
+
                 });
 
                 // Personas
