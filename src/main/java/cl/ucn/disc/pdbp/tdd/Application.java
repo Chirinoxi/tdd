@@ -70,6 +70,8 @@ public final class Application {
                 ApiBuilder.path("personas", () -> {
                     // C-03 Get -> /personas;
                     ApiBuilder.get(ApiRestEndpoints::getPersonas);
+
+                    ApiBuilder.post(ApiRestEndpoints::getPersonas);
                 });
 
             });
