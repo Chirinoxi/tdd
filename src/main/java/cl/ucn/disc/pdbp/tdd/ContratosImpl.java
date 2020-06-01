@@ -137,6 +137,27 @@ public class ContratosImpl implements Contratos{
     }
 
     /**
+     * Contrato C-?, Registra un control en la BD.
+     *
+     * @param control a registrar
+     * @return el control en la base de datos.
+     */
+    @Override
+    public Control registrarControl(Control control) {
+
+        if (control == null) throw new NullPointerException("The control object shouldn't be null !!!");
+
+        try{
+            log.debug("Insertando control en la base de datos.....!!");
+            this.repoControl.create(control);
+
+        }catch(Exception throwable){
+            throw new RuntimeException(throwable);
+        }
+        return this.repoControl.findById(control.getID());
+    }
+
+    /**
      * Contrato: C-03 buscar una ficha. La búsqueda se realiza por numero de ficha, rut del dueño, nombre de paciente y nombre del dueño.
      *
      * @param query to filter.

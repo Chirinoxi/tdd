@@ -52,6 +52,14 @@ public interface Contratos {
     Persona registrarPersona(Persona persona);
 
     /**
+     * Contrato C-?, Registra un control en la BD.
+     *
+     * @param control a registrar
+     * @return el control en la base de datos.
+     */
+    Control registrarControl(Control control);
+
+    /**
      * Contrato: C-03 buscar una ficha.
      * @param query to filter.
      * @return the {@link List} of {@link Ficha}.

@@ -91,11 +91,11 @@ public final class ApiRestEndpoints {
 
     public static void getControlesFicha(Context context) {
 
-        Ficha fichaDB = CONTRATOS.getFichaById(Long.parseLong(context.pathParam("numeroFicha")));
+        List<Ficha> fichaDB = CONTRATOS.buscarFicha(context.pathParam("numeroFicha"));
 
-        log.debug("Los controles solicitados {}", fichaDB.getControles());
+        List<Control> controles = fichaDB.get(0).getControles();
 
-        context.json(fichaDB.getControles());
+        context.json(controles);
 
     }
 
@@ -106,11 +106,13 @@ public final class ApiRestEndpoints {
      */
     public static void getDuenio(Context context) {
 
-        Ficha fichaDB = CONTRATOS.getFichaById(Long.parseLong(context.pathParam("numeroFicha")));
 
-        log.debug("Los controles solicitados {}", fichaDB.getDuenio());
+        List<Ficha> fichaDB = CONTRATOS.buscarFicha(context.pathParam("numeroFicha"));
 
-        context.json(fichaDB.getDuenio());
+        //.debug("Los controles solicitados {}", fichaDB.get(0).getDuenio());
+        Persona duenioDB = fichaDB.get(0).getDuenio();
+
+        context.json(duenioDB);
 
     }
 }
