@@ -125,18 +125,16 @@ public final class ApiRestEndpoints {
         String fechaNacimiento = ctx.formParam("fechaNacimiento");
 
         String sexoString = ctx.formParam("sexo");
-        Sexo sexo;
+        Sexo sexo = sexoString.equalsIgnoreCase("macho")? Sexo.MACHO: Sexo.HEMBRA;
 
         String tipoString =  ctx.formParam("tipo");
-        Tipo tipo;
-
-        if(sexoString.equalsIgnoreCase("macho")) sexo = Sexo.MACHO; else sexo = Sexo.HEMBRA;
-
-        if(tipoString.equalsIgnoreCase("interno")) tipo = Tipo.INTERNO; else tipo = Tipo.EXTERNO;
+        Tipo tipo = tipoString.equalsIgnoreCase("interno")? Tipo.INTERNO: Tipo.EXTERNO;
 
         String raza = ctx.formParam("raza");
         String color = ctx.formParam("color");
 
+        //if(sexoString.equalsIgnoreCase("macho")) sexo = Sexo.MACHO; else sexo = Sexo.HEMBRA;
+       //if(tipoString.equalsIgnoreCase("interno")) tipo = Tipo.INTERNO; else tipo = Tipo.EXTERNO;
 
         Long personaId = Long.parseLong(ctx.formParam("personaId"));
         Persona persona = CONTRATOS.getPersonaById(personaId); // TODO: Consultar si la relación entre duenio y ficha se hace mediante ID o rut (Front-end).
