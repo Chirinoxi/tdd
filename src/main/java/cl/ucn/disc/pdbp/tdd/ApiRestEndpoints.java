@@ -1,11 +1,36 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) [2020] [Ignacio Chirino Farías]
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package cl.ucn.disc.pdbp.tdd;
 
-import cl.ucn.disc.pdbp.tdd.model.Ficha;
-import cl.ucn.disc.pdbp.tdd.model.Persona;
+import cl.ucn.disc.pdbp.tdd.model.*;
 import io.javalin.http.Context;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,7 +69,7 @@ public final class ApiRestEndpoints {
 
     /**
      * API Rest route for find fichas
-     * @param ctx
+     * @param ctx Context
      */
     public static void findFichas(Context ctx){
 
@@ -58,18 +83,34 @@ public final class ApiRestEndpoints {
 
     public static void getPersonas(Context ctx){
 
-        List<Persona> personas = Arrays.asList(
-                new Persona("Ignacio", "Chirino", "19.445.801-0",
-                        "18 de Sept #449", 552246223, 953335379,
-                        "ichirino@gmail.com"),
+        List<Persona> personas = CONTRATOS.getAllPersonas();
 
-                new Persona("Bastihan", "Chirino", "20.212.289-2",
-                        "18 de sept #449", 552246223, 994018727,
-                        "bcf1999@hotmail.com")
-        );
-        // We send the list
         ctx.json(personas);
 
     }
 
+    public static void getControlesFicha(Context context) {
+
+        Ficha fichaDB = CONTRATOS.getFichaById(Long.parseLong(context.pathParam("numeroFicha")));
+
+        log.debug("Los controles solicitados {}", fichaDB.getControles());
+
+        context.json(fichaDB.getControles());
+
+    }
+
+    /**
+     * Returns JSON object with the data of a persona associated to a ficha.
+     *
+     * @param context
+     */
+    public static void getDuenio(Context context) {
+
+        Ficha fichaDB = CONTRATOS.getFichaById(Long.parseLong(context.pathParam("numeroFicha")));
+
+        log.debug("Los controles solicitados {}", fichaDB.getDuenio());
+
+        context.json(fichaDB.getDuenio());
+
+    }
 }

@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) [2020] [Ignacio Chirino Farías]
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
 package cl.ucn.disc.pdbp.tdd;
 
 import cl.ucn.disc.pdbp.tdd.dao.Repository;
@@ -113,7 +137,7 @@ public class ContratosImpl implements Contratos{
     }
 
     /**
-     * Contrato: C-03 buscar una ficha.
+     * Contrato: C-03 buscar una ficha. La búsqueda se realiza por numero de ficha, rut del dueño, nombre de paciente y nombre del dueño.
      *
      * @param query to filter.
      * @return the {@link List} of {@link Ficha}.
@@ -180,4 +204,15 @@ public class ContratosImpl implements Contratos{
     public List<Ficha> getAllFichas() {
         return this.repoFicha.findAll();
     }
+
+    @Override
+    public Ficha getFichaById(Long id) {
+        return this.repoFicha.findById(id);
+    }
+
+    @Override
+    public List<Persona> getAllPersonas() {
+        return this.repoPersona.findAll();
+    }
+
 }
