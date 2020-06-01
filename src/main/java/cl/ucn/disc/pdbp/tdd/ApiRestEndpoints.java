@@ -67,12 +67,26 @@ public final class ApiRestEndpoints {
 
     public static void getControlesFicha(Context context) {
 
-
         Ficha fichaDB = CONTRATOS.getFichaById(Long.parseLong(context.pathParam("numeroFicha")));
 
         log.debug("Los controles solicitados {}", fichaDB.getControles());
 
         context.json(fichaDB.getControles());
+
+    }
+
+    /**
+     * Returns JSON object with the data of a persona associated to a ficha.
+     *
+     * @param context
+     */
+    public static void getDuenio(Context context) {
+
+        Ficha fichaDB = CONTRATOS.getFichaById(Long.parseLong(context.pathParam("numeroFicha")));
+
+        log.debug("Los controles solicitados {}", fichaDB.getDuenio());
+
+        context.json(fichaDB.getDuenio());
 
     }
 }

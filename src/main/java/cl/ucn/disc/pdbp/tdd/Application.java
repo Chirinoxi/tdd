@@ -64,8 +64,13 @@ public final class Application {
                         ApiBuilder.get(ApiRestEndpoints::findFichas);
                     });
 
+                    // C-05, Get -> /fichas/{numeroFichas}/controles
                     ApiBuilder.path(":numeroFicha/controles", () -> {
                         ApiBuilder.get(ApiRestEndpoints::getControlesFicha);
+                    });
+
+                    ApiBuilder.path(":numeroFicha/duenio", () -> {
+                        ApiBuilder.get(ApiRestEndpoints::getDuenio);
                     });
 
                 });
