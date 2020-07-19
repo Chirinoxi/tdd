@@ -53,7 +53,7 @@ public final class Application {
 
     public static void main(String[] args){
 
-        //Gson configuratin
+        //Gson configuration
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -82,8 +82,13 @@ public final class Application {
 
                     // C-01, GET -> /fichas
                     ApiBuilder.get(ApiRestEndpoints::getAllFichas);
+
                     // POST -> Insertar Ficha
-                    ApiBuilder.post(ApiRestEndpoints::insertarFicha);
+                    ApiBuilder.path("create/*", () -> {
+
+                        ApiBuilder.post(ApiRestEndpoints::insertarFicha);
+                    });
+
 
                     // C-02
                     ApiBuilder.path("find/:query", () -> {
@@ -98,6 +103,7 @@ public final class Application {
                         ApiBuilder.get(ApiRestEndpoints::getControlesFicha);
 
                         //POST -> Agregar un control con un numero de ficha dado.
+                        ApiBuilder.post(ApiRestEndpoints::insertarFicha);
 
                     });
 
